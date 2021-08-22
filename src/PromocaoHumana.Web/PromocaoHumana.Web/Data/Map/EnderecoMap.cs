@@ -12,30 +12,38 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Cep)
-                .HasColumnType("nvarchar(8)")
+                .HasColumnType("nvarchar")
+                .HasMaxLength(8)
                 .IsRequired();
 
             builder.Property(c => c.Logradouro)
-                .HasColumnType("varchar(200)")
+                .HasColumnType("varchar")
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(c => c.Bairro)
-                .HasColumnType("varchar(80)")
+                .HasColumnType("varchar")
+                .HasMaxLength(80)
                 .IsRequired();
 
             builder.Property(c => c.Cidade)
-                .HasColumnType("varchar(150)")
+                .HasColumnType("varchar")
+                .HasMaxLength(150)
                 .IsRequired();
 
             builder.Property(c => c.Uf)
-                .HasColumnType("nchar(2)")
+                .HasColumnType("nchar")
+                .HasMaxLength(2)
                 .IsRequired();
 
             builder.Property(c => c.Numero)
-                .HasColumnType("varchar(5)");
+                .HasColumnType("varchar")
+                .HasMaxLength(5);
 
             builder.Property(c => c.Complemento)
-                .HasColumnType("varchar(50)");
+                .HasColumnType("varchar")
+                .HasMaxLength(50);
+
         }
     }
 }

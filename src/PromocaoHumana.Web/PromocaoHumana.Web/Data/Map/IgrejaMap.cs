@@ -14,11 +14,13 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Nome)
-                .HasColumnType("varchar(150)")
+                .HasColumnType("varchar")
+                .HasMaxLength(150)
                 .IsRequired();
 
             builder.Property(c => c.Paroco)
-                .HasColumnType("varchar(60)");
+                .HasColumnType("varchar")
+                .HasMaxLength(60);
 
             builder.HasOne(c => c.Endereco)
                 .WithMany()
@@ -26,7 +28,8 @@ namespace PromocaoHumana.Web.Data.Map
 
             builder.Property(c => c.Cnpj)
                 .HasConversion(new ValueConverter<Cnpj, string>(c => c, value => new Cnpj(value)))
-                .HasColumnType("nvarchar(14)");
+                .HasColumnType("nvarchar")
+                .HasMaxLength(14);
         }
     }
 }

@@ -12,7 +12,8 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Descricao)
-                .HasColumnType("varchar(150)")
+                .HasColumnType("varchar")
+                .HasMaxLength(150)
                 .IsRequired();
 
             builder.Property(c => c.DataRetirada)
@@ -24,11 +25,12 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasForeignKey("FamiliaId");
 
             builder.Property(c => c.QuemRetirou)
-                .HasColumnType("varchar(150)")
+                .HasColumnType("varchar")
+                .HasMaxLength(150)
                 .IsRequired(); 
 
             builder.HasOne(c => c.LocalRetirada)
-                .WithMany("varchar(150)")
+                .WithMany()
                 .HasForeignKey("LocalRetiradaId"); 
 
             builder.Property(c => c.Tipo)
