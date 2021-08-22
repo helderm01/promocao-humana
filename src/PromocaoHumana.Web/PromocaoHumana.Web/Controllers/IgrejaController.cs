@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PromocaoHumana.Web.Models;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using PromocaoHumana.Web.Data;
@@ -9,7 +10,7 @@ using PromocaoHumana.Web.Models.Igreja;
 namespace PromocaoHumana.Web.Controllers
 {
     [Authorize]
-    public class IgrejaController: Controller
+    public class IgrejaController : Controller
     {
         private readonly ApplicationDbContext _db;
 
@@ -20,9 +21,17 @@ namespace PromocaoHumana.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var igrejas = _db.Igrejas.ToList();
+            var retorno = igrejas.Select(c => new IgrejaViewModel()
+            {
+                Id = c.Id,
+                Nome = c.Nome,
+                Cnpj = c.Cnpj
+            });
+            
+            return View(retorno);
         }
-        
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -35,7 +44,7 @@ namespace PromocaoHumana.Web.Controllers
                 Nome = igreja.Nome
             });
         }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
