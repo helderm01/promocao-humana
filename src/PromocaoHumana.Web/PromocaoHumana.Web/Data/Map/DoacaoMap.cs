@@ -34,7 +34,7 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasForeignKey("LocalRetiradaId"); 
 
             builder.Property(c => c.Tipo)
-                .HasColumnType("long")
+                .HasColumnType("int")
                 .IsRequired(); 
         }
     }

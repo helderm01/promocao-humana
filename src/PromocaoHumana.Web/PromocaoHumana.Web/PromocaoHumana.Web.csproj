@@ -32,4 +32,13 @@
     <Content Remove="Application\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210822233140_initial-database.cs" />
+    <Compile Remove="Data\Migrations\20210822233140_initial-database.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210822233343_initial-database.cs" />
+    <Compile Remove="Data\Migrations\20210822233343_initial-database.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210822233429_initial-database.cs" />
+    <Compile Remove="Data\Migrations\20210822233429_initial-database.Designer.cs" />
+  </ItemGroup>
+
 </Project>

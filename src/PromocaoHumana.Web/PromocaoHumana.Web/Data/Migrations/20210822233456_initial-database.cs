@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PromocaoHumana.Web.Data.Migrations
 {
-    public partial class DatabaseUpdate : Migration
+    public partial class initialdatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace PromocaoHumana.Web.Data.Migrations
                 name: "Endereco",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cep = table.Column<string>(type: "nvarchar", maxLength: 8, nullable: false),
                     Logradouro = table.Column<string>(type: "varchar", maxLength: 200, nullable: false),
@@ -30,12 +30,12 @@ namespace PromocaoHumana.Web.Data.Migrations
                 name: "Igreja",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "varchar", maxLength: 150, nullable: false),
                     Paroco = table.Column<string>(type: "varchar", maxLength: 60, nullable: true),
                     Cnpj = table.Column<string>(type: "nvarchar", maxLength: 14, nullable: false),
-                    EnderecoId = table.Column<long>(nullable: true)
+                    EnderecoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace PromocaoHumana.Web.Data.Migrations
                 name: "Familia",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
                     Ativa = table.Column<bool>(nullable: false),
@@ -60,8 +60,8 @@ namespace PromocaoHumana.Web.Data.Migrations
                     CpfResponsavel = table.Column<string>(type: "nvarchar", maxLength: 12, nullable: false),
                     NomeConjuge = table.Column<string>(type: "varchar", maxLength: 150, nullable: true),
                     QuantidadeFilhos = table.Column<int>(nullable: false, defaultValue: 0),
-                    EnderecoId = table.Column<long>(nullable: true),
-                    ParoquiaId = table.Column<long>(nullable: true)
+                    EnderecoId = table.Column<int>(nullable: true),
+                    ParoquiaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,14 +84,14 @@ namespace PromocaoHumana.Web.Data.Migrations
                 name: "Doacao",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataRetirada = table.Column<DateTime>(type: "datetime", nullable: false),
                     Descricao = table.Column<string>(type: "varchar", maxLength: 150, nullable: false),
-                    FamiliaId = table.Column<long>(nullable: true),
-                    Tipo = table.Column<int>(type: "long", nullable: false),
+                    FamiliaId = table.Column<int>(nullable: true),
+                    Tipo = table.Column<int>(type: "int", nullable: false),
                     QuemRetirou = table.Column<string>(type: "varchar", maxLength: 150, nullable: false),
-                    LocalRetiradaId = table.Column<long>(nullable: true)
+                    LocalRetiradaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -10,8 +10,8 @@ using PromocaoHumana.Web.Data;
 namespace PromocaoHumana.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210822022231_DatabaseUpdate")]
-    partial class DatabaseUpdate
+    [Migration("20210822233456_initial-database")]
+    partial class initialdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -223,9 +223,9 @@ namespace PromocaoHumana.Web.Data.Migrations
 
             modelBuilder.Entity("PromocaoHumana.Web.Domain.Doacao", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DataRetirada")
@@ -236,11 +236,11 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("varchar")
                         .HasMaxLength(150);
 
-                    b.Property<long?>("FamiliaId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("FamiliaId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("LocalRetiradaId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("LocalRetiradaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("QuemRetirou")
                         .IsRequired()
@@ -248,7 +248,7 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasMaxLength(150);
 
                     b.Property<int>("Tipo")
-                        .HasColumnType("long");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -261,9 +261,9 @@ namespace PromocaoHumana.Web.Data.Migrations
 
             modelBuilder.Entity("PromocaoHumana.Web.Domain.Endereco", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bairro")
@@ -306,9 +306,9 @@ namespace PromocaoHumana.Web.Data.Migrations
 
             modelBuilder.Entity("PromocaoHumana.Web.Domain.Familia", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Ativa")
@@ -322,8 +322,8 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<long?>("EnderecoId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("EnderecoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomeConjuge")
                         .HasColumnType("varchar")
@@ -334,8 +334,8 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("varchar")
                         .HasMaxLength(150);
 
-                    b.Property<long?>("ParoquiaId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("ParoquiaId")
+                        .HasColumnType("int");
 
                     b.Property<int>("QuantidadeFilhos")
                         .ValueGeneratedOnAdd()
@@ -353,9 +353,9 @@ namespace PromocaoHumana.Web.Data.Migrations
 
             modelBuilder.Entity("PromocaoHumana.Web.Domain.Igreja", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cnpj")
@@ -363,8 +363,8 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("nvarchar")
                         .HasMaxLength(14);
 
-                    b.Property<long?>("EnderecoId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("EnderecoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
