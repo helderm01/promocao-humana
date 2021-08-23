@@ -16,7 +16,7 @@ namespace PromocaoHumana.Web.Domain
         {
         }
 
-        public Igreja(IgrejaViewModel novaIgreja)
+        public Igreja(NovaIgrejaViewModel novaIgreja)
         {
             AtribuirParoco(novaIgreja.Paroco);
 

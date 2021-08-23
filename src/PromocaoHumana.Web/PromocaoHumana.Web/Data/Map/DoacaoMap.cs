@@ -12,7 +12,6 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Descricao)
-                .HasColumnType("varchar")
                 .HasMaxLength(150)
                 .IsRequired();
 
@@ -25,7 +24,6 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasForeignKey("FamiliaId");
 
             builder.Property(c => c.QuemRetirou)
-                .HasColumnType("varchar")
                 .HasMaxLength(150)
                 .IsRequired(); 
 

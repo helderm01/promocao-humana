@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PromocaoHumana.Web.Data;
 
 namespace PromocaoHumana.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210823151336_Ajuste-cpf-cnpj")]
+    partial class Ajustecpfcnpj
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,7 +233,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<int?>("FamiliaId")
@@ -242,7 +244,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("QuemRetirou")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<int>("Tipo")
@@ -266,30 +268,30 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(80)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(80);
 
                     b.Property<string>("Cep")
                         .IsRequired()
-                        .HasColumnType("nvarchar(8)")
+                        .HasColumnType("nvarchar")
                         .HasMaxLength(8);
 
                     b.Property<string>("Cidade")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(50);
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(200);
 
                     b.Property<string>("Numero")
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(5);
 
                     b.Property<string>("Uf")
@@ -314,7 +316,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("CpfResponsavel")
                         .IsRequired()
-                        .HasColumnType("nvarchar(15)")
+                        .HasColumnType("nvarchar")
                         .HasMaxLength(15);
 
                     b.Property<DateTime>("DataCadastro")
@@ -324,12 +326,12 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NomeConjuge")
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<string>("NomeResponsavel")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<int?>("ParoquiaId")
@@ -358,7 +360,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
-                        .HasColumnType("nvarchar(18)")
+                        .HasColumnType("nvarchar")
                         .HasMaxLength(18);
 
                     b.Property<int?>("EnderecoId")
@@ -366,17 +368,14 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(150);
 
                     b.Property<string>("Paroco")
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("varchar")
                         .HasMaxLength(60);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Cnpj")
-                        .IsUnique();
 
                     b.HasIndex("EnderecoId");
 

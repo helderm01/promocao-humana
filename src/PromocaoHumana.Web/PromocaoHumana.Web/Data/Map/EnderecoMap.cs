@@ -12,22 +12,18 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Cep)
-                .HasColumnType("nvarchar")
                 .HasMaxLength(8)
                 .IsRequired();
 
             builder.Property(c => c.Logradouro)
-                .HasColumnType("varchar")
                 .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(c => c.Bairro)
-                .HasColumnType("varchar")
                 .HasMaxLength(80)
                 .IsRequired();
 
             builder.Property(c => c.Cidade)
-                .HasColumnType("varchar")
                 .HasMaxLength(150)
                 .IsRequired();
 
@@ -37,13 +33,10 @@ namespace PromocaoHumana.Web.Data.Map
                 .IsRequired();
 
             builder.Property(c => c.Numero)
-                .HasColumnType("varchar")
                 .HasMaxLength(5);
 
             builder.Property(c => c.Complemento)
-                .HasColumnType("varchar")
                 .HasMaxLength(50);
-
         }
     }
 }

@@ -18,8 +18,7 @@ namespace PromocaoHumana.Web.Data.Map
 
             builder.Property(c => c.CpfResponsavel)
                 .HasConversion(new ValueConverter<Cpf, string>(c => c, value => new Cpf(value)))
-                .HasColumnType("nvarchar")
-                .HasMaxLength(12);
+                .HasMaxLength(15);
 
             builder.Property(c => c.DataCadastro)
                 .HasColumnType("datetime")
@@ -30,11 +29,9 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasForeignKey("EnderecoId");
 
             builder.Property(c => c.NomeConjuge)
-                .HasColumnType("varchar")
                 .HasMaxLength(150);
 
             builder.Property(c => c.NomeResponsavel)
-                .HasColumnType("varchar")
                 .HasMaxLength(150)
                 .IsRequired();
 

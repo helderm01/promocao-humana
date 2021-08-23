@@ -5,30 +5,36 @@
 }
 
 <h2>Cadastro</h2>
-using (@Html.BeginForm()) {
-@Html.ValidationSummary(true)
-<fieldset>
+@using (Html.BeginForm("NovaIgreja", "Igreja", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
 
-    <legend>Igreja</legend>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Nome)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Nome)
-        @Html.ValidationMessageFor(model => model.Nome)
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Cnpj)
-    </div>
+        <legend>Igreja</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cnpj)
+        </div>
 
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Cnpj)
-        @Html.ValidationMessageFor(model => model.Cnpj)
-    </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cnpj)
+            @Html.ValidationMessageFor(model => model.Cnpj)
+        </div>
 
-</fieldset>
+    </fieldset>
+
+    <br/>
+
+    <div>
+
+        @Html.ActionLink("Voltar", "Index")
+        <input type="submit" value="Salvar" class="btn btn-success" />
+
+    </div>
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Index")
-</div>

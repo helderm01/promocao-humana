@@ -47,32 +47,43 @@ namespace PromocaoHumana.Web.Controllers
             });
         }
 
-        // [HttpPost]
         public IActionResult Create()
         {
-            // var novaIgreja = new Igreja(igrejaViewModel);
-            // _db.Igrejas.Add(novaIgreja);
-            // _db.SaveChanges();
-            //
-            // return RedirectToAction("Index");
             return View(new NovaIgrejaViewModel());
         }
 
-        // public IActionResult Post(IgrejaViewModel igrejaViewModel)
-        // {
-        //     if (igrejaViewModel.Id == 0)
-        //     {
-        //         var novaIgreja = new Igreja(igrejaViewModel);
-        //         _db.Igrejas.Add(novaIgreja);
-        //         _db.SaveChanges();
-        //     }
-        //     else
-        //     {
-        //         throw new NotImplementedException();
-        //     }
-        //     
-        //     return 
-        // }
+        [HttpPost]
+        public IActionResult NovaIgreja(NovaIgrejaViewModel novaIgrejaViewModel)
+        {
+            var novaIgreja = new Igreja(novaIgrejaViewModel);
+            _db.Igrejas.Add(novaIgreja);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(IgrejaViewModel alterarIgrejaViewModel)
+        {
+            var igreja = _db.Igrejas.Find(alterarIgrejaViewModel.Id);
+            igreja.AtribuirNome(alterarIgrejaViewModel.Nome);
+            igreja.AtribuirCnpj(alterarIgrejaViewModel.Cnpj);
+            
+            _db.Igrejas.Update(igreja);
+            _db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var igreja = _db.Igrejas.Find(id);
+            
+            _db.Igrejas.Remove(igreja);
+            _db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
