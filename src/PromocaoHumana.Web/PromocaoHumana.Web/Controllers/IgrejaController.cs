@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using PromocaoHumana.Web.Models;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using PromocaoHumana.Web.Data;
+using PromocaoHumana.Web.Domain;
 using PromocaoHumana.Web.Models.Igreja;
 
 namespace PromocaoHumana.Web.Controllers
@@ -28,11 +31,10 @@ namespace PromocaoHumana.Web.Controllers
                 Nome = c.Nome,
                 Cnpj = c.Cnpj
             });
-            
+
             return View(retorno);
         }
 
-        [HttpGet]
         public IActionResult Edit(int id)
         {
             var igreja = _db.Igrejas.Find(id);
@@ -44,6 +46,33 @@ namespace PromocaoHumana.Web.Controllers
                 Nome = igreja.Nome
             });
         }
+
+        // [HttpPost]
+        public IActionResult Create()
+        {
+            // var novaIgreja = new Igreja(igrejaViewModel);
+            // _db.Igrejas.Add(novaIgreja);
+            // _db.SaveChanges();
+            //
+            // return RedirectToAction("Index");
+            return View(new NovaIgrejaViewModel());
+        }
+
+        // public IActionResult Post(IgrejaViewModel igrejaViewModel)
+        // {
+        //     if (igrejaViewModel.Id == 0)
+        //     {
+        //         var novaIgreja = new Igreja(igrejaViewModel);
+        //         _db.Igrejas.Add(novaIgreja);
+        //         _db.SaveChanges();
+        //     }
+        //     else
+        //     {
+        //         throw new NotImplementedException();
+        //     }
+        //     
+        //     return 
+        // }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

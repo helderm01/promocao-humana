@@ -16,12 +16,12 @@ namespace PromocaoHumana.Web.Domain
         {
         }
 
-        public Igreja(NovaIgrejaViewModel command)
+        public Igreja(IgrejaViewModel novaIgreja)
         {
-            AtribuirParoco(command.Paroco);
+            AtribuirParoco(novaIgreja.Paroco);
 
-            var nomeValido = AtribuirNome(command.Nome);
-            var cnpjValido = AtribuirCnpj(command.Cnpj);
+            var nomeValido = AtribuirNome(novaIgreja.Nome);
+            var cnpjValido = AtribuirCnpj(novaIgreja.Cnpj);
 
             var erros = new StringBuilder();
             if (!nomeValido.Valida)

@@ -1,0 +1,34 @@
+@model PromocaoHumana.Web.Models.Igreja.NovaIgrejaViewModel
+
+@{
+    ViewData["Title"] = "Cadastro de Nova Igreja";
+}
+
+<h2>Cadastro</h2>
+using (@Html.BeginForm()) {
+@Html.ValidationSummary(true)
+<fieldset>
+
+    <legend>Igreja</legend>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Cnpj)
+    </div>
+
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Cnpj)
+        @Html.ValidationMessageFor(model => model.Cnpj)
+    </div>
+
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
