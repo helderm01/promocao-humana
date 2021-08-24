@@ -14,7 +14,8 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Ativa)
-                .IsRequired();
+                .IsRequired()
+                .HasDefaultValue(true);
 
             builder.Property(c => c.CpfResponsavel)
                 .HasConversion(new ValueConverter<Cpf, string>(c => c, value => new Cpf(value)))

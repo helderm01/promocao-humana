@@ -8,18 +8,14 @@ namespace PromocaoHumana.Web.Domain
     public class Igreja : EntidadeBase
     {
         public string Nome { get; private set; }
-        public string Paroco { get; private set; }
         public Cnpj Cnpj { get; private set; }
-        public Endereco Endereco { get; private set; }
 
         protected Igreja()
         {
         }
 
-        public Igreja(NovaIgrejaViewModel novaIgreja)
+        public Igreja(IgrejaViewModel novaIgreja)
         {
-            AtribuirParoco(novaIgreja.Paroco);
-
             var nomeValido = AtribuirNome(novaIgreja.Nome);
             var cnpjValido = AtribuirCnpj(novaIgreja.Cnpj);
 
@@ -58,8 +54,5 @@ namespace PromocaoHumana.Web.Domain
 
             return new ResultadoValidacaoEntidade(true, string.Empty);
         }
-
-        public void AtribuirEndereco(Endereco endereco) => Endereco = endereco;
-        public void AtribuirParoco(string nomeParoco) => Paroco = nomeParoco;
     }
 }

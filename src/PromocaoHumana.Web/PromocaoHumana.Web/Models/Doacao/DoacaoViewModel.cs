@@ -1,6 +1,6 @@
 ﻿namespace PromocaoHumana.Web.Models.Doacao
 {
-    public class NovaDoacaoViewModel
+    public class DoacaoViewModel
     {
         
     }

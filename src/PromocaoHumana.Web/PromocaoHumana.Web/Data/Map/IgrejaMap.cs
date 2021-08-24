@@ -17,13 +17,6 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasMaxLength(150)
                 .IsRequired();
 
-            builder.Property(c => c.Paroco)
-                .HasMaxLength(60);
-
-            builder.HasOne(c => c.Endereco)
-                .WithMany()
-                .HasForeignKey("EnderecoId");
-
             builder.Property(c => c.Cnpj)
                 .HasConversion(new ValueConverter<Cnpj, string>(c => c, value => new Cnpj(value)))
                 .HasMaxLength(18);

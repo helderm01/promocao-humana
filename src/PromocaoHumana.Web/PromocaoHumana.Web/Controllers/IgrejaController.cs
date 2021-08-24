@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PromocaoHumana.Web.Models;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using PromocaoHumana.Web.Data;
 using PromocaoHumana.Web.Domain;
 using PromocaoHumana.Web.Models.Igreja;
@@ -49,28 +47,48 @@ namespace PromocaoHumana.Web.Controllers
 
         public IActionResult Create()
         {
-            return View(new NovaIgrejaViewModel());
+            return View(new IgrejaViewModel());
         }
 
         [HttpPost]
-        public IActionResult NovaIgreja(NovaIgrejaViewModel novaIgrejaViewModel)
+        public IActionResult Salvar(IgrejaViewModel igrejaViewModel)
         {
-            var novaIgreja = new Igreja(novaIgrejaViewModel);
-            _db.Igrejas.Add(novaIgreja);
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult Alterar(IgrejaViewModel alterarIgrejaViewModel)
-        {
-            var igreja = _db.Igrejas.Find(alterarIgrejaViewModel.Id);
-            igreja.AtribuirNome(alterarIgrejaViewModel.Nome);
-            igreja.AtribuirCnpj(alterarIgrejaViewModel.Cnpj);
+            if (!ModelState.IsValid)
+            {
+                return View("_Igreja", igrejaViewModel);
+            }
             
-            _db.Igrejas.Update(igreja);
-            _db.SaveChanges();
+            try
+            {
+                if (igrejaViewModel.Id == 0)
+                {
+                    var novaIgreja = new Igreja(igrejaViewModel);
+                    _db.Igrejas.Add(novaIgreja);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    var igreja = _db.Igrejas.Find(igrejaViewModel.Id);
+                    igreja.AtribuirNome(igrejaViewModel.Nome);
+                    igreja.AtribuirCnpj(igrejaViewModel.Cnpj);
+            
+                    _db.Igrejas.Update(igreja);
+                    _db.SaveChanges();
+                }
+            }
+            catch (DbUpdateException e)
+            {
+                if(e.InnerException?.Message.Contains("IX_Igreja_Cnpj") ?? false)
+                {
+                    ModelState.AddModelError("Cnpj", "CNPJ já existe para outro registro.");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = e.Message;
+                }
+
+                return View("_Igreja", igrejaViewModel);
+            }
             
             return RedirectToAction("Index");
         }

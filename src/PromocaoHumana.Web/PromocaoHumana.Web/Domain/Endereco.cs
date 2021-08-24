@@ -16,7 +16,7 @@ namespace PromocaoHumana.Web.Domain
         public string Uf { get; private set; }
 
         protected Endereco() { }
-        public Endereco(NovoEnderecoViewModel command)
+        public Endereco(EnderecoViewModel command)
         {
             AtribuirNumero(command.Numero);
             AtribuirComplemento(command.Complemento);

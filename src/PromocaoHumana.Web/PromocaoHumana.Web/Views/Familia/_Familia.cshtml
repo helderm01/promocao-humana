@@ -1,0 +1,68 @@
+@model PromocaoHumana.Web.Models.Familia.FamiliaViewModel
+
+@using (Html.BeginForm("Salvar", "Familia", FormMethod.Post))
+{
+    @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+    {
+        @:<div class="alert alert-danger">
+        @:<p > @ViewBag.ErrorMessage </p >
+        @:</div >
+    }
+
+    <fieldset>
+        <div hidden>
+            @Html.EditorFor(model => model.Id)
+        </div>
+
+        <legend>Família</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomeResponsavel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NomeResponsavel)
+            @Html.ValidationMessageFor(model => model.NomeResponsavel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CpfResponsavel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CpfResponsavel)
+            @Html.ValidationMessageFor(model => model.CpfResponsavel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomeConjuge)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NomeConjuge)
+            @Html.ValidationMessageFor(model => model.NomeConjuge)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuantidadeFilhos)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuantidadeFilhos)
+            @Html.ValidationMessageFor(model => model.QuantidadeFilhos)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataCadastro)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataCadastro)
+            @Html.ValidationMessageFor(model => model.DataCadastro)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ativa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ativa)
+            @Html.ValidationMessageFor(model => model.Ativa)
+        </div>
+        
+        
+    </fieldset>
+}
