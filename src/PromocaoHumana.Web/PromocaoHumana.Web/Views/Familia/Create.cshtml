@@ -1,0 +1,17 @@
+@using PromocaoHumana.Web.Models.Endereco
+@model PromocaoHumana.Web.Models.Familia.FamiliaViewModel
+@Html.ValidationSummary()
+
+@{
+    ViewData["Title"] = "Cadastro de Nova Igreja";
+}
+
+<h2>Cadastro</h2>
+<div>
+    <div class="row">
+        <div class="col-sm-12">
+            @await Html.PartialAsync("_Familia", Model)
+            @await Html.PartialAsync("_Endereco", new EnderecoViewModel())
+        </div>
+    </div>
+</div>
