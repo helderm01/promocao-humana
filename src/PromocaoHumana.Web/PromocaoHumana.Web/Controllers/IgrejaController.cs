@@ -50,7 +50,6 @@ namespace PromocaoHumana.Web.Controllers
             return View(new IgrejaViewModel());
         }
 
-        [HttpPost]
         public IActionResult Salvar(IgrejaViewModel igrejaViewModel)
         {
             if (!ModelState.IsValid)

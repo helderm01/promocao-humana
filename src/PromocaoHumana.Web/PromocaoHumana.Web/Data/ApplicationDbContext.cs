@@ -9,7 +9,6 @@ namespace PromocaoHumana.Web.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Igreja> Igrejas { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Familia> Familias { get; set; }
         public DbSet<Doacao> Doacoes { get; set; }
 
@@ -47,7 +46,6 @@ namespace PromocaoHumana.Web.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new IgrejaMap());
-            builder.ApplyConfiguration(new EnderecoMap());
             builder.ApplyConfiguration(new FamiliaMap());
             builder.ApplyConfiguration(new DoacaoMap());
 

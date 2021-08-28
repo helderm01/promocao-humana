@@ -1,0 +1,14 @@
+﻿@model PromocaoHumana.Web.Models.Familia.FamiliaViewModel
+
+@{
+    ViewData["Title"] = @Html.DisplayNameFor(model => model.NomeResponsavel);
+}
+
+<h2>Alterar</h2>
+<div>
+    <div class="row">
+        <div class="col-sm-12">
+            @await Html.PartialAsync("_Familia", Model)
+        </div>
+    </div>
+</div>

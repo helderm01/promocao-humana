@@ -257,12 +257,15 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.ToTable("Doacao");
                 });
 
-            modelBuilder.Entity("PromocaoHumana.Web.Domain.Endereco", b =>
+            modelBuilder.Entity("PromocaoHumana.Web.Domain.Familia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativa")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -283,37 +286,6 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
-
-                    b.Property<string>("Uf")
-                        .IsRequired()
-                        .HasColumnType("nchar")
-                        .HasMaxLength(2);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Endereco");
-                });
-
-            modelBuilder.Entity("PromocaoHumana.Web.Domain.Familia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativa")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.Property<string>("CpfResponsavel")
                         .IsRequired()
                         .HasColumnType("nvarchar(15)")
@@ -322,8 +294,10 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("EnderecoId")
-                        .HasColumnType("int");
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("NomeConjuge")
                         .HasColumnType("nvarchar(150)")
@@ -334,19 +308,30 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int?>("ParoquiaId")
-                        .HasColumnType("int");
+                    b.Property<string>("Numero")
+                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(5);
+
+                    b.Property<string>("Observacoes")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<int>("QuantidadeFilhos")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Uf")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(2)")
+                        .HasMaxLength(2);
+
                     b.HasKey("Id");
-
-                    b.HasIndex("EnderecoId");
-
-                    b.HasIndex("ParoquiaId");
 
                     b.ToTable("Familia");
                 });
@@ -436,17 +421,6 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.HasOne("PromocaoHumana.Web.Domain.Igreja", "LocalRetirada")
                         .WithMany()
                         .HasForeignKey("LocalRetiradaId");
-                });
-
-            modelBuilder.Entity("PromocaoHumana.Web.Domain.Familia", b =>
-                {
-                    b.HasOne("PromocaoHumana.Web.Domain.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId");
-
-                    b.HasOne("PromocaoHumana.Web.Domain.Igreja", "Paroquia")
-                        .WithMany()
-                        .HasForeignKey("ParoquiaId");
                 });
 #pragma warning restore 612, 618
         }
