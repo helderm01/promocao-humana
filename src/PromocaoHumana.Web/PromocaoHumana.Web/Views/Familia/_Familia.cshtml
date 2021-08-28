@@ -1,3 +1,4 @@
+@using Microsoft.IdentityModel.Tokens
 @model PromocaoHumana.Web.Models.Familia.FamiliaViewModel
 
 @using (Html.BeginForm("Salvar", "Familia", FormMethod.Post))
@@ -70,6 +71,12 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Cep)
             @Html.ValidationMessageFor(model => model.Cep)
+            @Html.ActionLink(
+              "Buscar", 
+              "ConsultaCep",
+              "Familia",
+              Model,
+              new { @class = "btn btn-info" })
         </div>
 
         <div class="editor-label">
@@ -134,7 +141,7 @@
 
     <div>
 
-        @Html.ActionLink("Voltar", "Index")
+        @Html.ActionLink("Cancelar", "Index", new { id=1 }, new { @class = "btn btn-danger" })
         <input type="submit" value="Salvar" class="btn btn-success"/>
 
     </div>

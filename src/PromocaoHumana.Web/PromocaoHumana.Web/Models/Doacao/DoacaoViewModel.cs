@@ -13,7 +13,7 @@ namespace PromocaoHumana.Web.Models.Doacao
         public string Descricao { get;  set; }
         
         [DisplayName("Família")]
-        public string ResponsavelFamilia { get;  set; }
+        public string Familia { get;  set; }
         public int? FamiliaId { get; set; }
         
         [DisplayName("Local")]

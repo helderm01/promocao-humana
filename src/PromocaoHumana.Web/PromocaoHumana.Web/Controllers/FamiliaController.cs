@@ -2,12 +2,11 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Update;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PromocaoHumana.Web.Data;
 using PromocaoHumana.Web.Domain;
+using PromocaoHumana.Web.Infra;
 using PromocaoHumana.Web.Models.Familia;
-using PromocaoHumana.Web.Models.Igreja;
 
 namespace PromocaoHumana.Web.Controllers
 {
@@ -38,11 +37,15 @@ namespace PromocaoHumana.Web.Controllers
 
         public IActionResult Create()
         {
+            CarregarDropDowns();
+            
             return View(new FamiliaViewModel());
         }
 
         public IActionResult Edit(int id)
         {
+            CarregarDropDowns();
+            
             var familia = _db.Familias.Find(id);
 
             return View(new FamiliaViewModel
@@ -65,14 +68,14 @@ namespace PromocaoHumana.Web.Controllers
                 QuantidadeFilhos = familia.QuantidadeFilhos
             });
         }
-        
+
         public IActionResult Delete(int id)
         {
             var familia = _db.Familias.Find(id);
-            
+
             _db.Familias.Remove(familia);
             _db.SaveChanges();
-            
+
             return RedirectToAction("Index");
         }
 
@@ -127,8 +130,55 @@ namespace PromocaoHumana.Web.Controllers
                 ViewBag.ErrorMessage = e.Message;
                 return View("_Familia", familiaViewModel);
             }
-            
+
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ConsultaCep(string cep, FamiliaViewModel viewModel)
+        {
+            var viaCep = new ServicoViaCep();
+            var endereco = viaCep.ObterEndereco(viewModel.Cep);
+
+            if (endereco != null)
+            {
+                viewModel.Cep = endereco.Cep;
+                viewModel.Uf = endereco.Uf;
+                viewModel.Cidade = endereco.Localidade;
+                viewModel.Bairro = endereco.Bairro;
+                viewModel.Logradouro = endereco.Logradouro;
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "CEP não encontrado.";
+                return View("_Familia", viewModel);
+            }
+
+            return View("_Familia", viewModel);
+        }
+
+        private void CarregarDropDowns()
+        {
+            ViewData["Familias"] = new SelectList
+            (
+                _db.Familias.Select(c => new
+                {
+                    Id = c.Id,
+                    Nome = c.NomeResponsavel
+                }),
+                "Id", 
+                "Nome"
+            );
+
+            ViewData["Igrejas"] = new SelectList
+            (
+                _db.Igrejas.Select(c=> new
+                {
+                    Id = c.Id,
+                    Nome = c.Nome
+                }),
+                "Id", 
+                "Nome"
+            );
         }
     }
 }

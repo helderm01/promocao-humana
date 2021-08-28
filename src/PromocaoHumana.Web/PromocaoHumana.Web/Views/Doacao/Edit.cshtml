@@ -1,0 +1,15 @@
+﻿@model PromocaoHumana.Web.Models.Doacao.DoacaoViewModel
+@Html.ValidationSummary()
+
+@{
+    ViewData["Title"] = "Alterar doação";
+}
+
+<h2>Alterar</h2>
+<div>
+    <div class="row">
+        <div class="col-sm-12">
+            @await Html.PartialAsync("_Doacao", Model)
+        </div>
+    </div>
+</div>
