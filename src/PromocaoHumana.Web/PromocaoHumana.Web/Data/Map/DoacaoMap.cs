@@ -12,28 +12,32 @@ namespace PromocaoHumana.Web.Data.Map
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Descricao)
-                .HasMaxLength(150)
+                .HasMaxLength(250)
                 .IsRequired();
 
             builder.Property(c => c.DataRetirada)
                 .HasColumnType("datetime")
                 .IsRequired();
 
-            builder.HasOne(c => c.Familia)
-                .WithMany()
-                .HasForeignKey("FamiliaId");
+            builder.Property(c => c.MesRetirada)
+                .HasMaxLength(7)
+                .IsRequired();
 
             builder.Property(c => c.QuemRetirou)
                 .HasMaxLength(150)
-                .IsRequired(); 
+                .IsRequired();
+
+
+            builder.HasOne(c => c.Familia)
+                .WithMany()
+                .HasForeignKey(c => c.FamiliaId);
 
             builder.HasOne(c => c.LocalRetirada)
                 .WithMany()
-                .HasForeignKey("LocalRetiradaId"); 
+                .HasForeignKey(c => c.LocalRetiradaId);
 
-            builder.Property(c => c.Tipo)
-                .HasColumnType("int")
-                .IsRequired(); 
+            builder.HasIndex(c => new { c.MesRetirada, c.FamiliaId, c.LocalRetiradaId })
+                .IsUnique();
         }
     }
 }

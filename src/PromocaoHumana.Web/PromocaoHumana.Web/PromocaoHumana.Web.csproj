@@ -47,4 +47,8 @@
     <Compile Remove="Data\Migrations\20210827235821_Ajuste-na-familia.Designer.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Exceptions" />
+  </ItemGroup>
+
 </Project>

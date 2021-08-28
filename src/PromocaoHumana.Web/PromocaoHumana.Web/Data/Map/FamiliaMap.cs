@@ -68,6 +68,9 @@ namespace PromocaoHumana.Web.Data.Map
 
             builder.Property(c => c.Observacoes)
                 .HasMaxLength(200);
+            
+            builder.HasIndex(c => c.CpfResponsavel)
+                .IsUnique();
         }
     }
 }

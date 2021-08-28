@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PromocaoHumana.Web.Data;
 
 namespace PromocaoHumana.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210828005851_ajuste-familia")]
+    partial class ajustefamilia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,8 +233,8 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
                     b.Property<int?>("FamiliaId")
                         .HasColumnType("int");
@@ -240,25 +242,19 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.Property<int?>("LocalRetiradaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MesRetirada")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(7)")
-                        .HasMaxLength(7);
-
                     b.Property<string>("QuemRetirou")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FamiliaId");
 
                     b.HasIndex("LocalRetiradaId");
-
-                    b.HasIndex("MesRetirada", "FamiliaId", "LocalRetiradaId")
-                        .IsUnique()
-                        .HasFilter("[FamiliaId] IS NOT NULL AND [LocalRetiradaId] IS NOT NULL");
 
                     b.ToTable("Doacao");
                 });
@@ -322,6 +318,9 @@ namespace PromocaoHumana.Web.Data.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
+                    b.Property<int?>("ParoquiaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuantidadeFilhos")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -339,8 +338,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CpfResponsavel")
-                        .IsUnique();
+                    b.HasIndex("ParoquiaId");
 
                     b.ToTable("Familia");
                 });
@@ -430,6 +428,13 @@ namespace PromocaoHumana.Web.Data.Migrations
                     b.HasOne("PromocaoHumana.Web.Domain.Igreja", "LocalRetirada")
                         .WithMany()
                         .HasForeignKey("LocalRetiradaId");
+                });
+
+            modelBuilder.Entity("PromocaoHumana.Web.Domain.Familia", b =>
+                {
+                    b.HasOne("PromocaoHumana.Web.Domain.Igreja", "Paroquia")
+                        .WithMany()
+                        .HasForeignKey("ParoquiaId");
                 });
 #pragma warning restore 612, 618
         }
