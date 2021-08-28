@@ -27,16 +27,17 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasMaxLength(150)
                 .IsRequired();
 
-
             builder.HasOne(c => c.Familia)
-                .WithMany()
-                .HasForeignKey(c => c.FamiliaId);
+                .WithMany(c=>c.Doacoes)
+                .HasForeignKey(c => c.FamiliaId)
+                .IsRequired();
 
             builder.HasOne(c => c.LocalRetirada)
-                .WithMany()
-                .HasForeignKey(c => c.LocalRetiradaId);
+                .WithMany(c=>c.Doacoes)
+                .HasForeignKey(c => c.LocalRetiradaId)
+                .IsRequired();
 
-            builder.HasIndex(c => new { c.MesRetirada, c.FamiliaId, c.LocalRetiradaId })
+            builder.HasIndex(c => new { c.MesRetirada, c.FamiliaId })
                 .IsUnique();
         }
     }

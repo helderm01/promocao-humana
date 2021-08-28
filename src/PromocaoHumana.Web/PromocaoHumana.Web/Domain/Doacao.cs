@@ -22,8 +22,8 @@ namespace PromocaoHumana.Web.Domain
             AtribuirFamilia(familia);
             AtribuirLocalRetirada(localRetirada);
             AtribuirQuemRetirou(quemRetirou);
-            
-            MesRetirada = $"{DataRetirada.Month}/{DataRetirada.Year}";
+
+            MesRetirada = $"{DataRetirada.Month}/{DataRetirada.Year}".PadLeft(7, '0');
         }
 
         public void AtribuirFamilia(Familia familia)
@@ -48,9 +48,10 @@ namespace PromocaoHumana.Web.Domain
         {
             if (string.IsNullOrWhiteSpace(quemRetirou))
                 throw new ArgumentNullException(nameof(QuemRetirou), "É obrigatório informar quem retirou.");
-            
-            if(quemRetirou.Length > 150)
-                throw new ArgumentNullException(nameof(QuemRetirou), "Quem retirou deve conter no máximo 150 caracteres.");
+
+            if (quemRetirou.Length > 150)
+                throw new ArgumentNullException(nameof(QuemRetirou),
+                    "Quem retirou deve conter no máximo 150 caracteres.");
 
             QuemRetirou = quemRetirou;
         }

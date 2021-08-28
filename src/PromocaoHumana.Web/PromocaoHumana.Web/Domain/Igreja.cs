@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using PromocaoHumana.Web.Domain.Structs;
 using PromocaoHumana.Web.Models.Igreja;
@@ -9,6 +10,7 @@ namespace PromocaoHumana.Web.Domain
     {
         public string Nome { get; private set; }
         public Cnpj Cnpj { get; private set; }
+        public ICollection<Doacao> Doacoes { get; set; }
 
         protected Igreja()
         {

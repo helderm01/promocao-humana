@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using PromocaoHumana.Web.Data;
 using PromocaoHumana.Web.Domain;
 using PromocaoHumana.Web.Infra;
@@ -37,15 +36,11 @@ namespace PromocaoHumana.Web.Controllers
 
         public IActionResult Create()
         {
-            CarregarDropDowns();
-            
             return View(new FamiliaViewModel());
         }
 
         public IActionResult Edit(int id)
         {
-            CarregarDropDowns();
-            
             var familia = _db.Familias.Find(id);
 
             return View(new FamiliaViewModel
@@ -154,31 +149,6 @@ namespace PromocaoHumana.Web.Controllers
             }
 
             return View("_Familia", viewModel);
-        }
-
-        private void CarregarDropDowns()
-        {
-            ViewData["Familias"] = new SelectList
-            (
-                _db.Familias.Select(c => new
-                {
-                    Id = c.Id,
-                    Nome = c.NomeResponsavel
-                }),
-                "Id", 
-                "Nome"
-            );
-
-            ViewData["Igrejas"] = new SelectList
-            (
-                _db.Igrejas.Select(c=> new
-                {
-                    Id = c.Id,
-                    Nome = c.Nome
-                }),
-                "Id", 
-                "Nome"
-            );
         }
     }
 }

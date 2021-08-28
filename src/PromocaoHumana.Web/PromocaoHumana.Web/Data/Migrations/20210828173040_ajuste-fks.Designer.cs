@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PromocaoHumana.Web.Data;
 
 namespace PromocaoHumana.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210828173040_ajuste-fks")]
+    partial class ajustefks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,7 +260,7 @@ namespace PromocaoHumana.Web.Data.Migrations
 
                     b.HasIndex("LocalRetiradaId");
 
-                    b.HasIndex("MesRetirada", "FamiliaId")
+                    b.HasIndex("MesRetirada", "FamiliaId", "LocalRetiradaId")
                         .IsUnique();
 
                     b.ToTable("Doacao");

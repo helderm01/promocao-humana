@@ -77,7 +77,7 @@ namespace PromocaoHumana.Web.Controllers
             }
             catch (DbUpdateException e)
             {
-                if(e.InnerException?.Message.Contains("IX_Igreja_Cnpj") ?? false)
+                if (e.InnerException?.Message.Contains("IX_Igreja_Cnpj") ?? false)
                 {
                     ModelState.AddModelError("Cnpj", "CNPJ já existe para outro registro.");
                 }

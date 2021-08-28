@@ -18,16 +18,16 @@
             @Html.LabelFor(model => model.LocalRetirada)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Igrejas", (IEnumerable<SelectListItem>)ViewData["Igrejas"])
-            @Html.ValidationMessageFor(model => model.LocalRetirada)
+            @Html.DropDownListFor(model => model.LocalRetiradaId, (IEnumerable<SelectListItem>) ViewData["Igrejas"])
+            @Html.ValidationMessageFor(model => model.LocalRetiradaId)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Familia)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Familias", (IEnumerable<SelectListItem>)ViewData["Familias"])
-            @Html.ValidationMessageFor(model => model.Familia)
+            @Html.DropDownListFor(model => model.FamiliaId, (IEnumerable<SelectListItem>) ViewData["Familias"])
+            @Html.ValidationMessageFor(model => model.FamiliaId)
         </div>
 
         <div class="editor-label">

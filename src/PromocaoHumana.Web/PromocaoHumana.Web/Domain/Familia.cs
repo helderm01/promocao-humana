@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using PromocaoHumana.Web.Domain.Structs;
 
@@ -21,6 +23,7 @@ namespace PromocaoHumana.Web.Domain
         public string Uf { get; private set; }
         public string Telefone { get; private set; }
         public string Observacoes { get; private set; }
+        public ICollection<Doacao> Doacoes { get; set; }
 
         protected Familia()
         {
