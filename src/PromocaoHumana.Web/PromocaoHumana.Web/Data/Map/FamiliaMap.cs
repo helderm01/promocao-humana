@@ -22,7 +22,7 @@ namespace PromocaoHumana.Web.Data.Map
                 .HasMaxLength(15);
 
             builder.Property(c => c.DataCadastro)
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder.Property(c => c.NomeConjuge)

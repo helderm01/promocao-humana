@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-PromocaoHumana.Web-BB47F910-4690-44D8-AB9A-E82F91B8A278</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <LangVersion>8</LangVersion>
@@ -9,12 +9,27 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10" />
+    <PackageReference Include="jQuery" Version="3.6.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core.pt-br" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+    <PackageReference Include="NuGet.CommandLine" Version="5.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,16 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20210822233140_initial-database.cs" />
-    <Compile Remove="Data\Migrations\20210822233140_initial-database.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210822233343_initial-database.cs" />
-    <Compile Remove="Data\Migrations\20210822233343_initial-database.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210822233429_initial-database.cs" />
-    <Compile Remove="Data\Migrations\20210822233429_initial-database.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210827235658_Ajuste-na-familia.cs" />
-    <Compile Remove="Data\Migrations\20210827235658_Ajuste-na-familia.Designer.cs" />
-    <Compile Remove="Data\Migrations\20210827235821_Ajuste-na-familia.cs" />
-    <Compile Remove="Data\Migrations\20210827235821_Ajuste-na-familia.Designer.cs" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

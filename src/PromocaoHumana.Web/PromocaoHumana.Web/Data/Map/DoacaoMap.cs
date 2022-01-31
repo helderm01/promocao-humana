@@ -16,7 +16,7 @@ namespace PromocaoHumana.Web.Data.Map
                 .IsRequired();
 
             builder.Property(c => c.DataRetirada)
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder.Property(c => c.MesRetirada)

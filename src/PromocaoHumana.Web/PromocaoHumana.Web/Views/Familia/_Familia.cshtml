@@ -1,4 +1,3 @@
-@using Microsoft.IdentityModel.Tokens
 @model PromocaoHumana.Web.Models.Familia.FamiliaViewModel
 
 @using (Html.BeginForm("Salvar", "Familia", FormMethod.Post))
@@ -69,21 +68,15 @@
             @Html.LabelFor(model => model.Cep)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Cep)
+            @Html.EditorFor(model => model.Cep, new {id = "cep"})
             @Html.ValidationMessageFor(model => model.Cep)
-            @Html.ActionLink(
-              "Buscar", 
-              "ConsultaCep",
-              "Familia",
-              Model,
-              new { @class = "btn btn-info" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Logradouro)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Logradouro)
+            @Html.EditorFor(model => model.Logradouro, new {id = "rua"})
             @Html.ValidationMessageFor(model => model.Logradouro)
         </div>
 
@@ -99,7 +92,7 @@
             @Html.LabelFor(model => model.Bairro)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Bairro)
+            @Html.EditorFor(model => model.Bairro, new {id = "bairro"})
             @Html.ValidationMessageFor(model => model.Bairro)
         </div>
 
@@ -115,7 +108,7 @@
             @Html.LabelFor(model => model.Cidade)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Cidade)
+            @Html.EditorFor(model => model.Cidade, new {id = "cidade"})
             @Html.ValidationMessageFor(model => model.Cidade)
         </div>
 
@@ -123,7 +116,7 @@
             @Html.LabelFor(model => model.Uf)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Uf)
+            @Html.EditorFor(model => model.Uf, new { id = "uf"})
             @Html.ValidationMessageFor(model => model.Uf)
         </div>
 
@@ -136,13 +129,37 @@
         </div>
 
     </fieldset>
-    
+
     <br/>
 
     <div>
 
-        @Html.ActionLink("Cancelar", "Index", new { id=1 }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Cancelar", "Index", new {id = 1}, new {@class = "btn btn-danger"})
         <input type="submit" value="Salvar" class="btn btn-success"/>
 
     </div>
+
+    @section Scripts
+    {
+        <script>
+                jQuery(function ($) {
+                    $("input[id='cep']").change(function () {
+                            var cep = $(this).val();
+                            if (cep.lenth <= 0) return;
+                            $.get(`https://viacep.com.br/ws/.${cep}/json`, function (result) {
+                                    if (result.status != 1) {
+                                        alert(result.message || "Houve um erro desconhecido");
+                                        return;
+                                    } 
+                                    $("input[id='cep']").val(result.Cep);
+                                    $("input[id='rua']").val(result.Logradouro);
+                                    $("input[id='bairro']").val(result.Bairro);
+                                    $("input[id='cidade']").val(result.Localidade);
+                                    $("input[id='uf']").val(result.Uf);
+                                });
+                        });
+                    });
+            </script>
+    }
+
 }
