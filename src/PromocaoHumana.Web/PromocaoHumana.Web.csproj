@@ -5,6 +5,9 @@
     <UserSecretsId>aspnet-PromocaoHumana.Web-BB47F910-4690-44D8-AB9A-E82F91B8A278</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <LangVersion>8</LangVersion>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
