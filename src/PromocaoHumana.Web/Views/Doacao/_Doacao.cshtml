@@ -5,8 +5,8 @@
     @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
     {
         @:<div class="alert alert-danger">
-        @:<p > @ViewBag.ErrorMessage </p >
-        @:</div >
+            @:<p> @ViewBag.ErrorMessage </p>
+        @:</div>
     }
 
     <fieldset>
@@ -14,45 +14,36 @@
             @Html.EditorFor(model => model.Id)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.LocalRetirada)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.LocalRetiradaId, (IEnumerable<SelectListItem>) ViewData["Igrejas"])
+            @Html.DropDownListFor(model => model.LocalRetiradaId, (IEnumerable<SelectListItem>)ViewData["Igrejas"], new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.LocalRetiradaId)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Familia)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.FamiliaId, (IEnumerable<SelectListItem>) ViewData["Familias"])
+            @Html.DropDownListFor(model => model.FamiliaId, (IEnumerable<SelectListItem>)ViewData["Familias"], new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.FamiliaId)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.QuemRetirou)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.QuemRetirou)
+            @Html.EditorFor(model => model.QuemRetirou, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o quem retirou " } })
             @Html.ValidationMessageFor(model => model.QuemRetirou)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Descricao)
-        </div>
-        <div class="editor-field">
+            <!-- precisa adicionar a classe form-control no TextArea -->
             @Html.TextAreaFor(model => model.Descricao, 5)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
     </fieldset>
 
-    <br/>
+    <br />
 
     <div>
-
-        @Html.ActionLink("Voltar", "Index")
-        <input type="submit" value="Salvar" class="btn btn-success"/>
-
+        @Html.ActionLink("Voltar", "Index", new { id = 1 }, new { @class = "btn btn-outlined" })
+        <input type="submit" value="Salvar" class="btn btn-primary" />
     </div>
 }
