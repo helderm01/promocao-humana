@@ -9,133 +9,106 @@
         @:</div >
     }
 
-    <fieldset>
-        <div hidden>
-            @Html.EditorFor(model => model.Id)
-        </div>
+<fieldset>
+    <div hidden>
+        @Html.EditorFor(model => model.Id)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Ativa)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Ativa)
-            @Html.ValidationMessageFor(model => model.Ativa)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ativa)
+        @Html.EditorFor(model => model.Ativa)
+        @Html.ValidationMessageFor(model => model.Ativa)
+    </div>
 
-        <legend>Família</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NomeResponsavel)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NomeResponsavel)
-            @Html.ValidationMessageFor(model => model.NomeResponsavel)
-        </div>
+    <legend>Família</legend>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomeResponsavel)
+        @Html.EditorFor(model => model.NomeResponsavel, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o nome do responsável " } })
+        @Html.ValidationMessageFor(model => model.NomeResponsavel)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CpfResponsavel)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CpfResponsavel)
-            @Html.ValidationMessageFor(model => model.CpfResponsavel)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CpfResponsavel)
+        @Html.EditorFor(model => model.CpfResponsavel, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o CPF do responsável" } })
+        @Html.ValidationMessageFor(model => model.CpfResponsavel)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NomeConjuge)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NomeConjuge)
-            @Html.ValidationMessageFor(model => model.NomeConjuge)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomeConjuge)
+        @Html.EditorFor(model => model.NomeConjuge, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o nome do conjuge" } })
+        @Html.ValidationMessageFor(model => model.NomeConjuge)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.QuantidadeFilhos)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.QuantidadeFilhos)
-            @Html.ValidationMessageFor(model => model.QuantidadeFilhos)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuantidadeFilhos)]
+        @Html.EditorFor(model => model.QuantidadeFilhos, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe a quantidade de filhos" } })
+        @Html.ValidationMessageFor(model => model.QuantidadeFilhos)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Telefone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Telefone)
-            @Html.ValidationMessageFor(model => model.Telefone)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Telefone)
+        @Html.EditorFor(model => model.Telefone, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o telefone" } })
+        @Html.ValidationMessageFor(model => model.Telefone)
+    </div>
 
-        <legend>Endereço</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Cep)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Cep)
-            @Html.ValidationMessageFor(model => model.Cep)
-        </div>
+    <legend>Endereço</legend>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cep)
+        @Html.EditorFor(model => model.Cep, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o CEP" } })
+        @Html.ValidationMessageFor(model => model.Cep)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Logradouro)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Logradouro)
-            @Html.ValidationMessageFor(model => model.Logradouro)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Logradouro)
+        @Html.EditorFor(model => model.Logradouro, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o logradouro" } })
+        @Html.ValidationMessageFor(model => model.Logradouro)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Numero)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Numero)
-            @Html.ValidationMessageFor(model => model.Numero)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Numero)
+        @Html.EditorFor(model => model.Numero, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o numero" } })
+        @Html.ValidationMessageFor(model => model.Numero)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Bairro)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Bairro)
-            @Html.ValidationMessageFor(model => model.Bairro)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bairro)
+        @Html.EditorFor(model => model.Bairro, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o bairro" } })
+        @Html.ValidationMessageFor(model => model.Bairro)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Complemento)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Complemento)
-            @Html.ValidationMessageFor(model => model.Complemento)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Complemento)
+        @Html.EditorFor(model => model.Complemento, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe o complemento" } })
+        @Html.ValidationMessageFor(model => model.Complemento)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Cidade)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Cidade)
-            @Html.ValidationMessageFor(model => model.Cidade)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cidade)
+        @Html.EditorFor(model => model.Cidade, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe a cidade" } })
+        @Html.ValidationMessageFor(model => model.Cidade)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Uf)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Uf)
-            @Html.ValidationMessageFor(model => model.Uf)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Uf)
+        @Html.EditorFor(model => model.Uf, additionalViewData: new { htmlAttributes = new { @class = "form-control", placeholder = "Informe a UF" } })
+        @Html.ValidationMessageFor(model => model.Uf)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Observacoes)
+        <!-- precisa adicionar a classe form-control no TextArea -->
+        @Html.TextAreaFor(model => model.Observacoes, 5)
+        @Html.ValidationMessageFor(model => model.Observacoes)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Observacoes)
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Observacoes, 5)
-            @Html.ValidationMessageFor(model => model.Observacoes)
-        </div>
-
-    </fieldset>
+</fieldset>
 
     <br/>
 
     <div>
 
-        @Html.ActionLink("Cancelar", "Index", new {id = 1}, new {@class = "btn btn-danger"})
-        <input type="submit" value="Salvar" class="btn btn-success"/>
+        @Html.ActionLink("Cancelar", "Index", new {id = 1, @class = "btn btn-outlined" })
+        <input type="submit" value="Salvar" class="btn btn-primary"/>
 
     </div>
 
